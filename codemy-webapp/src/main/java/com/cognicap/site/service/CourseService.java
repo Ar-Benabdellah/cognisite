@@ -20,6 +20,8 @@ package com.cognicap.site.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import com.cognicap.codemy.core.persistence.domain.Course;
@@ -39,12 +41,38 @@ public class CourseService {
 		// get random int between 1 and 100
 		double i = Math.ceil(Math.random() * 100);
 		//courseRepository.dropCourseCollection();
-		//courseRepository.insertCourse( new Course("static/img/uml.png","Formation JAVA - Niveau Associé - 1Z0-850"+i,  "level"+i,  "format"+i,"duree"+i,  "niveau"+i,  "objectif"+i, "prereq"+i,  "Cette formations présente:<br/>- Les fondamentaux du concept orienté objet et présentation de la méthode de modélisation UML<br/>- Implémentation JAVA des concepts orienté objet<br/>- Algorithmique et implémentation des programmes en JAVA et les fondamentaux de développement JAVA<br/>- Présentation de quelques technologies client JAVA et présentation de quelques technologies serveur JAVA "+i));
+		courseRepository.insertCourse( new Course("aez","static/img/uml.png","Formation JAVA - Niveau Associé - 1Z0-850"+i,  "level"+i,  "format"+i,"duree"+i,  "niveau"+i,  "objectif"+i, "prereq"+i,  "Cette formations présente:<br/>- Les fondamentaux du concept orienté objet et présentation de la méthode de modélisation UML<br/>- Implémentation JAVA des concepts orienté objet<br/>- Algorithmique et implémentation des programmes en JAVA et les fondamentaux de développement JAVA<br/>- Présentation de quelques technologies client JAVA et présentation de quelques technologies serveur JAVA "+i));
 
 	}
 	
 	public List<Course> getAllCourses() {
 		return courseRepository.getAllCourses();
+	}
+	
+	public Course getCourse(String id) {
+	
+		 return courseRepository.getCourse(id);
+	}
+	/**
+	 * Adds a new course
+	 */
+	public Boolean add(Course course) {
+		return courseRepository.add(course);
+	}
+	
+	/**
+	 * Deletes an existing course
+	 */
+	public Boolean delete(String id) {
+		return courseRepository.delete(id);
+	}
+	
+	/**
+	 * Edits an existing course
+	 */
+	public Boolean edit(Course course) {
+
+		return courseRepository.edit(course);
 	}
 
 }

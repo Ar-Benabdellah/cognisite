@@ -15,10 +15,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 @XmlRootElement(name="Course")
 public class Course {
-	
+
+
+
 	@Id
 	private String id;
-
+	
+	private String sigle;
 	private String icon;
 	private String title;
 	private String level;
@@ -50,9 +53,10 @@ public class Course {
 		this.description = description;
 		this.sessions=sessions;
 	}
-	public Course(String icon, String title, String level,
+	public Course(String sigle, String icon, String title, String level,
 	    		String format, String duration, String niveau,String objectif, String prerequisite,
 	    		String description){
+			this.sigle=sigle;
 	    	this.icon=icon;
 	    	this.title=title;
 	    	this.level=level;
@@ -67,7 +71,7 @@ public class Course {
 		public String getId() {
 			return id;
 		}
-
+	
 		public void setId(String id) {
 			this.id = id;
 		}
@@ -142,6 +146,14 @@ public class Course {
 
 		public void setNiveau(String niveau) {
 			this.niveau = niveau;
+		}
+
+		public String getSigle() {
+			return sigle;
+		}
+
+		public void setSigle(String sigle) {
+			this.sigle = sigle;
 		}
 		
 		
